@@ -1,0 +1,129 @@
+﻿@*@model BusinessEntity.SubjectModel*@
+@model BusinessEntity.PaginationModel
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Create</h1>
+
+<h4>EmployeeModel</h4>
+<hr />
+<form asp-action="Index">
+    <div class="table table-striped">
+        @foreach (var item in Model.Data)
+        {
+            <div class="row">
+                <div class="col-md-4">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label asp-for="@item.SubjectNumber" class="control-label"></label>
+                        <input asp-for="@item.SubjectNumber" class="form-control" />
+                        <span asp-validation-for="@item.SubjectNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@item.FirstName" class="control-label"></label>
+                        <input asp-for="@item.FirstName" class="form-control" />
+                        <span asp-validation-for="@item.FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@item.LastName" class="control-label"></label>
+                        <input asp-for="@item.LastName" class="form-control" />
+                        <span asp-validation-for="@item.LastName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@item.MiddleName" class="control-label"></label>
+                        <input asp-for="@item.MiddleName" class="form-control" />
+                        <span asp-validation-for="@item.MiddleName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="@item.DateOfBirth" class="control-label"></label>
+                        <input asp-for="@item.DateOfBirth" class="form-control" />
+                        <span asp-validation-for="@item.DateOfBirth" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@item.RegistrationDate" class="control-label"></label>
+                        <input asp-for="@item.RegistrationDate" class="form-control" />
+                        <span asp-validation-for="@item.RegistrationDate" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@item.Status" class="control-label"></label>
+                        <input asp-for="@item.Status" class="form-control" />
+                        <span asp-validation-for="@item.Status" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@item.BMI" class="control-label"></label>
+                        <input asp-for="@item.BMI" class="form-control" />
+                        <span asp-validation-for="@item.BMI" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="@item.Height" class="control-label"></label>
+                        <input asp-for="@item.Height" class="form-control" />
+                        <span asp-validation-for="@item.Height" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@item.Weight" class="control-label"></label>
+                        <input asp-for="@item.Weight" class="form-control" />
+                        <span asp-validation-for="@item.Weight" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@item.ContactNo" class="control-label"></label>
+                        <input asp-for="@item.ContactNo" class="form-control" />
+                        <span asp-validation-for="@item.ContactNo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@item.Languages.LanguageName" class="control-label"></label>
+                        <select asp-for="@item.Languages" class="control-label" asp-items="@item.GetLanguages"></select>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div>
+                <ul class="pagination">
+                    <li class="page-item @(!Model.ShowFirst ? "disabled":"")">
+                        <a asp-page="/IndexAsync" asp-route-CurrentPage="1" class="page-link">
+                            <i class="glyphicon glyphicon-fast-backward"></i>
+                        </a>
+                    </li>
+                    <li class="page-item @(!Model.ShowPrevious? "disabled":"")">
+                        <a asp-page="/IndexAsync" asp-route-CurrentPage="@(Model.CurrentPage - 1)" class="page-link">
+                            <i class="glyphicon glyphicon-step-backward"></i>
+                        </a>
+                    </li>
+                    <li class="page-item  @(!Model.ShowNext? "disabled":"")">
+                        <a asp-page="/IndexAsync" asp-route-CurrentPage="@(Model.CurrentPage + 1)" class="page-link">
+                            <i class="glyphicon glyphicon-step-forward"></i>
+                        </a>
+                    </li>
+
+                    <li class="page-item  @(!Model.ShowLast? "disabled":"")">
+                        <a asp-page="/IndexAsync" asp-route-CurrentPage="@Model.TotalPages" class="page-link">
+                            <i class="glyphicon glyphicon-fast-forward"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</form>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
