@@ -5,7 +5,7 @@ namespace CRUDByInfrastructure.Controllers
 {
     public static class BootStrapper
     {
-        public static IServiceCollection RegisterBootStrapper(this IServiceCollection services)
+        public static IServiceCollection BootStrapperServices(this IServiceCollection services)
         {
             services.AddScoped<IEmployee, EmployeeRepository>();
             services.AddScoped<ISubject, SubjectRepository>();
