@@ -56,11 +56,5 @@ namespace BusinessEntity
         public bool ShowNext => CurrentPage < TotalPages;
         public bool ShowFirst => CurrentPage != 1;
         public bool ShowLast => CurrentPage != TotalPages;
-
-        //public async Task OnGetAsync()
-        //{
-        //    Data = await _personService.GetPaginatedResult(CurrentPage, PageSize);
-        //    Count = await _personService.GetCount();
-        //}
     }
 }
