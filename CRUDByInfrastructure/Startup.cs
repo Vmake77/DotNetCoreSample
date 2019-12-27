@@ -24,7 +24,7 @@ namespace CRUDByInfrastructure
             {
                 options.AddPolicy("AllowAllOrigins", builder => { builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod(); });
             });
-            services.RegisterBootStrapper();
+            services.BootStrapperServices();
             services.AddControllersWithViews();
         }
 
